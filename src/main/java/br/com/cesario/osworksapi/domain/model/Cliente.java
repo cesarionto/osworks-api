@@ -3,6 +3,7 @@ package br.com.cesario.osworksapi.domain.model;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 @Getter
 @Setter
@@ -18,11 +19,19 @@ public class Cliente {
     private long id;
 
     @Column(name = "nome")
+    @NotBlank
+    @Size(max = 255)
     private String nome;
 
     @Column(name = "email")
+    @NotBlank
+    @Email
+
+    @Size(max = 255)
     private String email;
 
     @Column(name = "telefone")
+    @NotBlank
+    @Size(max = 20)
     private String telefone;
 }

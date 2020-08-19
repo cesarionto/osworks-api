@@ -1,4 +1,4 @@
-package br.com.cesario.osworksapi.controllers;
+package br.com.cesario.osworksapi.api.controllers;
 
 import br.com.cesario.osworksapi.domain.model.Cliente;
 import br.com.cesario.osworksapi.domain.repository.ClienteRepository;
@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,12 +34,12 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente salvar(@RequestBody Cliente cliente) {
+    public Cliente salvar(@Valid @RequestBody Cliente cliente) {
         return clienteRepository.save(cliente);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> atualizar(@Valid @PathVariable Long id, @RequestBody Cliente cliente) {
         if (!clienteRepository.existsById(id))
             return ResponseEntity.notFound().build();
         cliente.setId(id);
