@@ -3,12 +3,10 @@ package br.com.cesario.osworksapi.controllers;
 import br.com.cesario.osworksapi.domain.model.Cliente;
 import br.com.cesario.osworksapi.domain.repository.ClienteRepository;
 import lombok.AllArgsConstructor;
-import org.aspectj.apache.bcel.generic.InstructionConstants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,14 +18,14 @@ public class ClienteController {
     private ClienteRepository clienteRepository;
 
     @GetMapping
-    public List<Cliente> listar(){
+    public List<Cliente> listar() {
         return clienteRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Cliente> buscar(@PathVariable Long id){
+    public ResponseEntity<Cliente> buscar(@PathVariable Long id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);
-        if(cliente.isPresent())
+        if (cliente.isPresent())
             return ResponseEntity.ok(cliente.get());
         else
             return ResponseEntity.notFound().build();
@@ -35,12 +33,12 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente salvar (@RequestBody Cliente cliente){
+    public Cliente salvar(@RequestBody Cliente cliente) {
         return clienteRepository.save(cliente);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente cliente){
+    public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @RequestBody Cliente cliente) {
         if (!clienteRepository.existsById(id))
             return ResponseEntity.notFound().build();
         cliente.setId(id);
@@ -49,7 +47,7 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remover(@PathVariable Long id){
+    public ResponseEntity<Void> remover(@PathVariable Long id) {
         if (!clienteRepository.existsById(id))
             return ResponseEntity.notFound().build();
         clienteRepository.deleteById(id);
