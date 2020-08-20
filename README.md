@@ -1,13 +1,19 @@
-OSWorks - API
--
-API REST desenvolvida a semana de SPRING REST da algaworks, desenvolvida com o Java na versão 11 LTS.
-Consiste em um CRUD para gerenciar ordens de serviços para clientes cadastrados no sistema.
+# OSWorks - API - by Cesário Neto
 
-Caractéristicas
--
-- Aplicação desenvolvida com o Spring Boot.
-- Para o mapeamento relacional foi utilizado o  Spring Data com as especificações do Jakarta JPA.
-- Para a persistencia de dados foi utilizado o SGBD PostgresSQL(https://www.postgresql.org/).
-- Para o versionamento do banco de dados foi utilizado o flyway(https://flywaydb.org/).
-- Encapsulamentos e construtores das classes foi utilizado o Lombok(https://projectlombok.org/) para o gerenciamento em tempo de execução.
-- As validações das requisições foram tratadas através do pacote Validation do Spring(https://www.codeflow.site/pt/article/spring-boot-bean-validation).
+API REST desenvolvida na semana de [SPRING REST da algaworks](https://cafe.algaworks.com/spring-rest-para-iniciantes/), de 17 a 24 de Agosto de 2020:
+
+[![Semana SPRING REST algaworks](./spring_algaworks.png)](https://cafe.algaworks.com/spring-rest-para-iniciantes/)
+
+## A aplicação:
+
+
+É um CRUD para gerenciar ordens de serviço para clientes cadastrados no sistema.
+
+## Características:
+- Feito em [Java](https://www.oracle.com/java), na versão 11 LTS .
+- Inicializada com [Spring Boot](https://www.spring.io/projects/spring-boot).
+- Mapeamento relacional feito com Spring Data e Jakarta JPA.
+- Persistência de dados feito com o SGBD [PostgresSQL](https://www.postgresql.org).
+- Controle de versão do banco de dados feito com o [flyway](https://www.flywaydb.org).
+- Escrita do código repetitivo feito com o auxílio do [Lombok](https://www.projectlombok.org).
+- Validações das requisições feitas com o pacote [Validation do Spring](https://www.codeflow.site/pt/article/spring-boot-bean-validation).
