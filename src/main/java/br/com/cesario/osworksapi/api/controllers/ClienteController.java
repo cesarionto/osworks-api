@@ -2,6 +2,7 @@ package br.com.cesario.osworksapi.api.controllers;
 
 import br.com.cesario.osworksapi.domain.model.Cliente;
 import br.com.cesario.osworksapi.domain.repository.ClienteRepository;
+import br.com.cesario.osworksapi.domain.service.ClienteService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class ClienteController {
 
     private ClienteRepository clienteRepository;
+
+    private ClienteService clienteService;
 
     @GetMapping
     public List<Cliente> listar() {
@@ -35,7 +38,7 @@ public class ClienteController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente salvar(@Valid @RequestBody Cliente cliente) {
-        return clienteRepository.save(cliente);
+        return clienteService.salvar(cliente);
     }
 
     @PutMapping("/{id}")
@@ -51,7 +54,7 @@ public class ClienteController {
     public ResponseEntity<Void> remover(@PathVariable Long id) {
         if (!clienteRepository.existsById(id))
             return ResponseEntity.notFound().build();
-        clienteRepository.deleteById(id);
+        clienteService.deletar(id);
 
         return ResponseEntity.noContent().build();
     }
