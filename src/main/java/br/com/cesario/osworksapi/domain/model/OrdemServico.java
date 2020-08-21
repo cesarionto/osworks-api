@@ -1,8 +1,5 @@
 package br.com.cesario.osworksapi.domain.model;
 
-import br.com.cesario.osworksapi.domain.validations.ValidationGroup;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

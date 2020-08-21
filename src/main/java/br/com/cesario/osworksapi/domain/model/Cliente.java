@@ -1,6 +1,4 @@
 package br.com.cesario.osworksapi.domain.model;
-
-import br.com.cesario.osworksapi.domain.validations.ValidationGroup;
 import lombok.*;
 
 import javax.persistence.*;
@@ -27,7 +25,6 @@ public class Cliente {
     @Column(name = "email")
     @NotBlank
     @Email
-
     @Size(max = 255)
     private String email;
 
