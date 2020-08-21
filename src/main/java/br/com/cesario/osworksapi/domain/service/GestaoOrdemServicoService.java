@@ -1,5 +1,6 @@
 package br.com.cesario.osworksapi.domain.service;
 
+import br.com.cesario.osworksapi.domain.exception.EntidadeNãoEncontradaExceptions;
 import br.com.cesario.osworksapi.domain.exception.NegocioException;
 import br.com.cesario.osworksapi.domain.model.Cliente;
 import br.com.cesario.osworksapi.domain.model.Comentario;
@@ -35,7 +36,7 @@ public class GestaoOrdemServicoService {
         OrdemServico ordemServico = ordemServicoRepository
                 .findById(ordemServicoId)
                 .orElseThrow(
-                        ()-> new NegocioException("Ordem de servico não encontrada")
+                        ()-> new EntidadeNãoEncontradaExceptions("Ordem de servico não encontrada")
                 );
 
         Comentario comentario = new Comentario();

@@ -1,5 +1,6 @@
 package br.com.cesario.osworksapi.api.exception;
 
+import br.com.cesario.osworksapi.domain.exception.EntidadeNãoEncontradaExceptions;
 import br.com.cesario.osworksapi.domain.exception.NegocioException;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -52,6 +53,17 @@ public class ApiExceptionHendler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(NegocioException.class)
     public ResponseEntity<Object> handleNegocio(NegocioException ex, WebRequest request){
         var status = HttpStatus.BAD_REQUEST;
+        Problema problema = new Problema();
+        problema.setStatus(status.value());
+        problema.setTitulo(ex.getMessage());
+        problema.setDataHora(OffsetDateTime.now());
+
+        return handleExceptionInternal(ex, problema, new HttpHeaders(), status, request);
+    }
+
+    @ExceptionHandler(EntidadeNãoEncontradaExceptions.class)
+    public ResponseEntity<Object> handleEntidadeNaoEncontrada(EntidadeNãoEncontradaExceptions ex, WebRequest request){
+        var status = HttpStatus.NOT_FOUND;
         Problema problema = new Problema();
         problema.setStatus(status.value());
         problema.setTitulo(ex.getMessage());
