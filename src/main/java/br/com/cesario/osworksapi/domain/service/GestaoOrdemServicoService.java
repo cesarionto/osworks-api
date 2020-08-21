@@ -10,6 +10,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -24,7 +27,8 @@ public class GestaoOrdemServicoService {
         );
         ordemServico.setCliente(cliente);
         ordemServico.setStatusOrdemServico(StatusOrdemServico.ABERTA);
-        ordemServico.setDataAbertuta(LocalDateTime.now());
+        ordemServico.setDataAbertuta(OffsetDateTime.now());
         return  ordemServicoRepository.save(ordemServico);
     }
+
 }

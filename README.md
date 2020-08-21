@@ -17,3 +17,4 @@ API REST desenvolvida na semana de [SPRING REST da algaworks](https://cafe.algaw
 - Controle de versão do banco de dados feito com o [flyway](https://www.flywaydb.org).
 - Escrita do código repetitivo feito com o auxílio do [Lombok](https://www.projectlombok.org).
 - Validações das requisições feitas com o pacote [Validation do Spring](https://www.codeflow.site/pt/article/spring-boot-bean-validation).
+- Mapeamento de Representation model para Entity Model com  [ModelMapper](http://modelmapper.org/).

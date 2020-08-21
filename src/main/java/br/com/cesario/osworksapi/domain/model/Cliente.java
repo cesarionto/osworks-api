@@ -1,5 +1,6 @@
 package br.com.cesario.osworksapi.domain.model;
 
+import br.com.cesario.osworksapi.domain.validations.ValidationGroup;
 import lombok.*;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import javax.validation.constraints.*;
 public class Cliente {
 
     @Id
+    @NotNull(groups = ValidationGroup.ClienteId.class)
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
