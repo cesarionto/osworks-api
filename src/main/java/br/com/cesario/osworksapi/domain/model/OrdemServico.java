@@ -1,5 +1,6 @@
 package br.com.cesario.osworksapi.domain.model;
 
+import br.com.cesario.osworksapi.domain.exception.NegocioException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,4 +39,20 @@ public class OrdemServico {
     @OneToMany(mappedBy = "ordemServico")
     private List<Comentario> comentarios = new ArrayList<>();
 
+    public boolean podeSerFinalizada() {
+        return StatusOrdemServico.ABERTA.equals(getStatusOrdemServico());
+    }
+
+    public boolean naoPodeSerFinalizada() {
+        return !podeSerFinalizada();
+    }
+
+    public void finalizar() {
+        if (naoPodeSerFinalizada())
+            throw new NegocioException("A Ordem de serviço ja está finalizada");
+
+        setStatusOrdemServico(StatusOrdemServico.FINALIZADA);
+        setDataFinalizacao(OffsetDateTime.now());
+
+    }
 }
