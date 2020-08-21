@@ -7,13 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.groups.ConvertGroup;
-import javax.validation.groups.Default;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 @Entity
@@ -25,29 +19,21 @@ public class OrdemServico {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Valid
-    @ConvertGroup(from = Default.class, to = ValidationGroup.ClienteId.class)
-    @NotNull
     @ManyToOne
     private Cliente cliente;
 
-    @NotBlank
     private String descricao;
 
-    @NotNull
     private BigDecimal preco;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private StatusOrdemServico statusOrdemServico;
 
     @Column(name = "data_abertura")
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private OffsetDateTime dataAbertuta;
 
     @Column(name = "data_finalizacao")
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private OffsetDateTime dataFinalizacao;
 
 }
